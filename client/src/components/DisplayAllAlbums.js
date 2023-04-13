@@ -7,7 +7,7 @@ const DisplayAllAlbums = (props) => {
     const{allAlbums, setAllAlbums} = props
     
     useEffect(() => {
-        axios.get('http://localhost:8000/api/allAlbums')
+        axios.get('http://localhost:8000/api/allAlbums', {withCredentials:true})
             .then((allAlbums) => {
             console.log(allAlbums);
             setAllAlbums(allAlbums.data)

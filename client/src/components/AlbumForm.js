@@ -26,13 +26,16 @@ const AlbumForm = (props) => {
 
     const submitHandler = (e) => {
         e.preventDefault();
-        axios.post('http://localhost:8000/api/postAlbum', album)
+        axios.post('http://localhost:8000/api/postAlbum', album, {withCredentials:true})
             .then((res) => {
                 setAllAlbums([...allAlbums, res.data])
-                navigate('/')
+                navigate('/dashboard')
             })
             .catch((err) => {
                 console.log(err);
+                if(!err.response.data.verified){
+                    setErrors({loggedIn:'You must be logged in to post an album'})
+                }
                 // console.log(err.response.data.error.errors);
                 setErrors(err.response.data.errors);
             })

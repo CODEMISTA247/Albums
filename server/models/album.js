@@ -29,6 +29,10 @@ const AlbumSchema = new mongoose.Schema({
         required: true,
         required:[true, 'Explicit is required']
     }
+/*     user_id:{
+        type:mongoose.Types.ObjectId,
+        ref:'User'
+    } */
     
 }, {timestamps:true})
 const Album = mongoose.model('Album', AlbumSchema);
